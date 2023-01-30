@@ -9,18 +9,27 @@ const val DATA_AMOUNT = 10000000
 fun main() {
 
     val tests = listOf(
-        "java comparable" to JavaTests.javaComparableTest,
-        "java comparator" to JavaTests.javaComparatorTest,
-        "kotlin comparable" to KotlinTests.kotlinComparableTest,
-        "kotlin comparator" to KotlinTests.kotlinComparatorTest,
-        "kotlin sortBy" to KotlinTests.kotlinSortByTest,
-        "kotlin inline compareBy" to KotlinTests.kotlinInlineCompareByTest,
-        "kotlin outline compareBy" to KotlinTests.kotlinOutlineCompareByTest
+        // [group 1 - comparable]
+        "group 1 - java comparable" to JavaTests.javaComparableTest,
+        "group 1 - kotlin comparable" to KotlinTests.kotlinComparableTest,
+
+        // [group 2 - comparator]
+        "group 2 - java comparator" to JavaTests.javaComparatorTest,
+        "group 2 - kotlin comparator" to KotlinTests.kotlinComparatorTest,
+
+        // [group 3 -  inline tests]
+        "group 3 - kotlin inline sortBy" to KotlinTests.kotlinInlineSortByTest,
+        "group 3 - kotlin inline compareBy" to KotlinTests.kotlinInlineCompareByTest,
+
+        // [group 4 - extracted inline tests]
+        "group 4 - kotlin extracted inline comparing values by test" to KotlinTests.kotlinExtractedInlineComparingValuesByTest,
+        "group 4 - kotlin extracted inline compare values test" to KotlinTests.kotlinExtractedInlineCompareValuesTest,
     )
         .map { (name, test) -> PrintUsedMemorySortTest(name, test) }
 
     repeat(10) {
-        val data = MutableList(DATA_AMOUNT) { Data() }
+        val data = List(DATA_AMOUNT) { Data() }
+
         tests.shuffled().forEach { it.dummyRun(data) }
         tests.shuffled().forEach { it.runSortTestOn(data) }
         println()

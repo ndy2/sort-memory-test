@@ -1,6 +1,7 @@
 package helper;
 
-public class Data implements Comparable<Data> {
+
+public class Data implements Comparable<Data>{
 
     public int a;
     public int b;
