@@ -24,6 +24,9 @@ fun main() {
         // [group 4 - extracted inline tests]
         "group 4 - kotlin extracted inline comparing values by test" to KotlinTests.kotlinExtractedInlineComparingValuesByTest,
         "group 4 - kotlin extracted inline compare values test" to KotlinTests.kotlinExtractedInlineCompareValuesTest,
+
+        // [group 5 - extracted inline comparable casting tests]
+        "group 5 - kotlin extracted inline comparable casting test" to KotlinTests.kotlinExtractedInlineComparableCastingTest,
     )
         .map { (name, test) -> PrintUsedMemorySortTest(name, test) }
 
