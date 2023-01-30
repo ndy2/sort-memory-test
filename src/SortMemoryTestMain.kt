@@ -4,7 +4,7 @@ import JavaTests
 import helper.Data
 import test.PrintUsedMemorySortTest
 
-const val DATA_AMOUNT = 1000000
+const val DATA_AMOUNT = 10000000
 
 fun main() {
 
@@ -12,6 +12,7 @@ fun main() {
         "java comparable" to JavaTests.javaComparableTest,
         "java comparator" to JavaTests.javaComparatorTest,
         "kotlin comparable" to KotlinTests.kotlinComparableTest,
+        "kotlin comparator" to KotlinTests.kotlinComparatorTest,
         "kotlin sortBy" to KotlinTests.kotlinSortByTest,
         "kotlin inline compareBy" to KotlinTests.kotlinInlineCompareByTest,
         "kotlin outline compareBy" to KotlinTests.kotlinOutlineCompareByTest
