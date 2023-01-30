@@ -2,7 +2,7 @@
 
 여러 방식으로 구성된 정렬 API 를 통해 랜덤 숫자 천 만개 10000000개를 정렬 하고 사용된 메모리 총량을 확인해보자!
 
-### 실험 방식
+### 진행 방식
 
 랜덤한 숫자 10000000 개를 생성하여 이를 `Data` 에 담고 정렬한다.
 
@@ -60,8 +60,8 @@ JVM 로딩을 고려하여 dummy run 을 모두 한번씩 해당 데이터로 �
 
 ---
 
-### 실험 결과
-
+### 실행 결과
+```
 [group 3 - kotlin inline compareBy] 4258 Mb
 [group 3 - kotlin inline sortBy] 4258 Mb
 [group 4 - kotlin extracted inline comparing values by] 4258 Mb
@@ -81,11 +81,11 @@ JVM 로딩을 고려하여 dummy run 을 모두 한번씩 해당 데이터로 �
 [group 7 - kotlin comparing int 2] 2738 Mb
 [group 7 - kotlin comparing int 3] 2738 Mb
 [group 7 - kotlin comparing int 4] 2738 Mb
-
+```
 
 PS. 여러번 실행하여도 꽤 일정한 경향성을 보인다.
 
-### 실험 결론
+### 결론
 
 메모리 사용량 - [group 1] = [group 2] = [group 6] < [group 3] = [group 4] = [group 5]
 
