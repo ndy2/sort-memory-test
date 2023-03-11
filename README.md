@@ -224,15 +224,14 @@ public static final class Companion {
 
 자세한 이유를 모르겠다. Autoboxing 에 관한 문제 일 것이라고 예상 했는데 [group 7] 의 `comparingNullableInt2` 를 보면 auto boxing 이 발생하였음에도 메모리를 적게 사용 하였다. 사실 문제가 없는 [group 6] 의 경우에도 바이트 코드를 보면 Comparable 타입을 전달 받기 때문에 각각의 `코틀린 Int` 가 Primitive 타입으로 전달 될 것이라고 생각되지는 않는데 메모리를 적게 사용한다.
 
+
 ### 결론
 
-이유는 잘 모르겠지만 문제가 발생하는 상황을 정리해 보면 `kotlin.comparisons - Comparsions.Kt#compareValues` Nullable 한 아규먼트에 Primitive 한 값을 전달하여 참조 비교를 하는 경우 메모리를 낭비 할 수 있다. 특히 정렬 API 를 사용할때 앞으로 `compareValues` 를 기반으로 한 `compareBy` 나 `sortBy` 사용을 주의해야 겠다. 사실 뭔가 AutoBoxing 과 관련된 문제가 맞는것 같은데 확실하게 확인 하는 법을 모르겠다. 사실 위 바이트 코드만 보고 auto boxing 발생 여부를 판단 할 수 있는지도 확실하지 않다.
+이유는 잘 모르겠지만 문제가 발생하는 상황을 정리해 보면 `kotlin.comparisons - Comparsions.Kt#compareValues` Nullable 한 아규먼트에 Primitive 한 값을 전달하여 참조 비교를 하는 경우 메모리를 낭비 할 수 있다. 특히 정렬 API 를 사용할때 앞으로 `compareValues` 를 기반으로 한 `compareBy` 나 `sortBy` 사용을 주의해야 겠다. 사실 뭔가 AutoBoxing 과 관련된 문제가 맞는것 같은데 확실하게 확인 하는 법을 모르겠다. 사실 위 바이트 코드만 보고 auto boxing 발생 여부를 판단 할 수 있는지도 확실하지 않다. - 그렇지 않다고 한다 아래 참고
+
+> Also, remember that there are lots of things at many levels that can affect performance. Even with a solid understanding of autoboxing, things like compiler optimizations (both by the Kotlin compiler and the JIT compiler) can cause surprising differences from our expectations. The only way to truly know the real-life performance impact of our coding decisions is to actually run tests with a benchmarking tool, such as JMH. - quote from "https://typealias.com/guides/inline-classes-and-autoboxing/"
+
+
 
 개인적으로 PS 할때 `Comparable` 을 확장 하면 코드가 더 길어져서 `sortBy` 를 애용 했었는데 이런 문제가 있을 줄 몰랐다...
 앞으로는 그냥 [group 2] 방식 처럼 Comparator 를 직접 생성하여 전달해야겠다.
-
-
-
-
-
-
